@@ -18,7 +18,7 @@ var osm_estandar = L.tileLayer(' http://a.tile.openstreetmap.org/{z}/{x}/{y}.png
 
 
 //Enlazar capas 
-var proyectos_wfs 		= "http://192.168.1.11:8080/geoserver/proyectos_total/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=proyectos_total%3Aproyectos_totales&maxFeatures=50&outputFormat=application%2Fjson";
+var proyectos_wfs 		= "http://192.168.1.11:8080/geoserver/proyectos_total/ows?service=WFS&version=2.0.0&request=GetFeature&typeName=proyectos_total%3Aproyectos_totales&maxFeatures=50&outputFormat=application%2Fjson";
 var proyectos_total 	= new L.GeoJSON.AJAX(proyectos_wfs,{
 	onEachFeature : popup_proyectos
 });

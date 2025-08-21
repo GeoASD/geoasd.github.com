@@ -85,6 +85,16 @@ var searchControl = new L.Control.Search({
 					    }
 }).addTo(map);
 
+//Muestra nombre completo del proyecto al poner el cursor
+searchControl.on('search:expanded', function() {
+    // Espera un momento para que los elementos aparezcan
+    setTimeout(function() {
+        document.querySelectorAll('.search-tip').forEach(function(el) {
+            el.setAttribute('title', el.textContent);
+        });
+    }, 200);
+});
+
 
 
 //Evento cuando se encuentre la busqueda
@@ -131,6 +141,7 @@ var leyenda = L.control.Legend({
 				}
 	]
 });
+
 
 
 

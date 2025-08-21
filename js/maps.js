@@ -73,7 +73,16 @@ var searchControl = new L.Control.Search({
 						propertyName : "Proyecto",
 						zoom : 12,
 						collapsed : false,
-						textSearch: true
+						filterData: function(text, records) {
+        					var results = {};
+					        var searchText = text.toLowerCase();
+					        for (var key in records) {
+					            if (key.toLowerCase().indexOf(searchText) !== -1) {
+					                results[key] = records[key];
+					            }
+					        }
+					        return results;
+					    }
 }).addTo(map);
 
 
@@ -122,5 +131,6 @@ var leyenda = L.control.Legend({
 				}
 	]
 });
+
 
 

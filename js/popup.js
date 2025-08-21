@@ -5,7 +5,7 @@ function popup_proyectos(feature, layer){
 							"<br>"+"<b>Proyecto: </b>" + feature.properties.Proyecto +
 							"<br>"+"<b>Código: </b>" + feature.properties.Código +
 							"<br>"+"<b>Sector: </b>" + feature.properties.Sector +
-							"<br>"+"<b>Tipo de servicio: </b>" + feature.properties.Tipo_de_se +
+							"<br>"+"<b>Tipo de servicio: </b>" + feature.properties.Tipo_de_Se +
 							"<br>"+"<b>Departamento: </b>" + feature.properties.Departamen +
 							"<br>"+"<b>Provincia: </b>" + feature.properties.Provincia +
 							"<br>"+"<b>Distrito: </b>" + feature.properties.Distrito +
@@ -16,6 +16,7 @@ function popup_proyectos(feature, layer){
 		});
 	}
 };
+
 
 
 

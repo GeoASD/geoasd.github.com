@@ -60,8 +60,8 @@ L.control.coordinates({
 //Agregar control de geocodificación
 L.Control.geocoder({
 	position: "topleft",
-	placeholder: "Ingrese un código...",
-	errorMessage: "No se encontraron resultados con su código"
+	placeholder: "Ingrese el proyecto...",
+	errorMessage: "No se encontraron resultados"
 });
 
 
@@ -72,7 +72,8 @@ var searchControl = new L.Control.Search({
 						layer : proyectos_total,
 						propertyName : "Proyecto",
 						zoom : 12,
-						collapsed : false
+						collapsed : false,
+						textSearch: true
 }).addTo(map);
 
 
@@ -121,4 +122,5 @@ var leyenda = L.control.Legend({
 				}
 	]
 });
+
 

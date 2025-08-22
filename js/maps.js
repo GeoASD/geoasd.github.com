@@ -97,6 +97,60 @@ searchControl.on('search:tooltip', function(e) {
 
 
 
+
+
+
+
+
+
+
+
+// Botón de colapsar
+  document.getElementById('toggleSidebar').addEventListener('click', () => {
+    const sidebar = document.getElementById('sidebar');
+    const button = document.getElementById('toggleSidebar');
+
+    sidebar.classList.toggle('collapsed');
+    button.textContent = sidebar.classList.contains('collapsed') ? '⏵' : '⏴';
+  });
+
+  // Ejemplo: cargando JSON con proyectos
+  fetch('ruta/a/tu/archivo.json')
+    .then(res => res.json())
+    .then(data => {
+      const conteo = {};
+      data.features.forEach(f => {
+        const dpto = f.properties.departamento;
+        conteo[dpto] = (conteo[dpto] || 0) + 1;
+      });
+
+      const lista = document.getElementById('deptos-list');
+      for (const [dpto, total] of Object.entries(conteo)) {
+        const li = document.createElement('li');
+        li.textContent = `${dpto}: ${total}`;
+        lista.appendChild(li);
+      }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Evento cuando se encuentre la busqueda
 searchControl.on('search:locationfound', function(e){
 
@@ -141,6 +195,7 @@ var leyenda = L.control.Legend({
 				}
 	]
 });
+
 
 
 

@@ -10,6 +10,7 @@
 		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		
 		<script src="plugins/leaflet.js"></script>
 		<script src="plugins/Leaflet.Coordinates-0.1.5.min.js"></script>
@@ -17,44 +18,116 @@
 		<script src="plugins/leaflet-search.min.js"></script>
 		<script src="plugins/leaflet.legend.js"></script>
 		<script src="plugins/leaflet.ajax.min.js"></script>
+		<script src="plugins/leaflet-sidebar.min.js"></script>
+		<script src="plugins/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
 		
 		
 		
 		<link rel="stylesheet" type="text/css" href="plugins/leaflet.css">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="plugins/Leaflet.Coordinates-0.1.5.css">
 		<link rel="stylesheet" type="text/css" href="plugins/Control.Geocoder.css">
 		<link rel="stylesheet" type="text/css" href="plugins/leaflet-search.min.css">
 		<link rel="stylesheet" type="text/css" href="plugins/leaflet.legend.css">
 		<link rel="stylesheet" type="text/css" href="plugins/all.min.css">
+		<link rel="stylesheet" type="text/css" href="plugins/leaflet-sidebar.min.css"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+		<link rel="stylesheet" type="text/css" href="plugins/bootstrap.min.css">
 		
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	
 	<body>
 		<header>
 			<img src="images/blanco.png" alt="Logo ASD" id="logo">
+			
 			<h1>GEO ASD - Visor de Proyectos</h1>
 		</header>
 		
 		
-		<div id="map">
+		<div id="map"></div>
+		
+		
+		
+		
+		<!-- Inicio del Sidebar -->
+
+		<div id="sidebar" class="leaflet-sidebar collapsed">
+
+			<div class="leaflet-sidebar-tabs">
+				<ul role="tablist">
+					<!-- Pestañas del sidebar -->
+					<li><a href="#home" role="tab"><i class="fa-solid fa-house-user"></i></a></li>
+					<li><a href="#loadshp" role="tab"><i class="fa-solid fa-upload"></i></a></li>
+					<li><a href="#dashboard" role="tab"><i class="fa-solid fa-chart-column"></i></a></li>
+				</ul>
+			</div>
+
+
+			<div class="leaflet-sidebar-content">
+				<!-- Contenido de la Pestaña Inicio -->
+				<div class="leaflet-sidebar-pane" id="home">
+					<h1 class="leaflet-sidebar-header">	Bienvenido</h1>
+					<p></p>
+					<p>En ASD Consultants nos especializamos en proveer servicios de consultoría
+					ambiental, social y seguridad industrial en los sectores
+					de minería, energía (hidrocarburos y electricidad),
+					industria, salud y saneamiento.</p>
+				</div>
+
+				<!-- Contenido de la Área de estudio -->
+				<div class="leaflet-sidebar-pane" id="loadshp">
+					<h1 class="leaflet-sidebar-header">Sube tu área de estudio</h1>
+					<p></p>
+					<p>Agrega un archivo en formato ZIP conteniendo el shapefile</p>
+						<div id="controls">
+							<input type="file"  id="shapefile-input" accept=".zip">
+							<br><br><button class ="btn btn-success btn-sm"  id="show-button">Mostrar Shapefile</button>
+							<button class ="btn btn-danger btn-sm" id="clear-button">Borrar Shapefile</button>
+						</div>	
+				</div>
+				
+				
+					<!-- Contenido de la Pestaña Dashboard -->
+				<div class="leaflet-sidebar-pane" id="dashboard">
+					<h1 class="leaflet-sidebar-header">	Proyectos realizados</h1>
+					
+					<!-- Gráfico de barras por Región -->
+					<h6 style="margin-top: 20px;">Proyectos por Regíon</h6>
+					<canvas id="dashboardBarChart" height="200"></canvas>
+
+					<!-- Gráfico de donuts por Actividad -->
+					<h6 style="margin-top: 30px;">Proyectos por Actividad</h6>
+					<canvas id="dashboardDoughnutChart" height="200"></canvas>
+				</div>
+				
+			</div>
 			
 		</div>
+
+		<!-- Fín del Sidebar -->
+		
+		
+		
+		
+		
+		
+		
 		
 	
 		<script src="geojson/proyectos_total.js"></script>
 		<script src="js/simbologia.js"></script>
 		<script src="js/popup.js"></script>
 		<script src="js/tooltip.js"></script>
+		
+		<script src="js/load_shapefile.js"></script>
+		<script src="js/shp.min.js"></script>
+		
+		
 		<script src="js/maps.js"></script>
 		
 	</body>
 	
 </html>
-
-
-
-
-
 
 

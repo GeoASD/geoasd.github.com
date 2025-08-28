@@ -53,129 +53,7 @@ var proyectos_total = L.geoJSON(proyectos_total,{
     onEachFeature: popup_proyectos
 }).addTo(map);
 
-generarDashboard(proyectos_total);
 
-// ----------------------------------------
-// Función para crear el gráfico del dashboard
-// ----------------------------------------
-
-function generarDashboard(capa) {
-	let porDepartamento = {};
-	let porActividad = {};
-
-	capa.eachLayer(function (layer) {
-		const props = layer.feature.properties;
-
-		let depto = props.Departamen;
-		let actividad = props.Actividad;
-
-		if (depto) {
-			if (!porDepartamento[depto]) porDepartamento[depto] = 0;
-			porDepartamento[depto]++;
-		}
-
-		if (actividad) {
-			if (!porActividad[actividad]) porActividad[actividad] = 0;
-			porActividad[actividad]++;
-		}
-	});
-
-	// --- Gráfico de barras por Departamento ---
-	const deptoEntries = Object.entries(porDepartamento).sort((a, b) => a[0].localeCompare(b[0]));
-	const deptoLabels = deptoEntries.map(entry => entry[0]);
-	const deptoData = deptoEntries.map(entry => entry[1]);
-
-	const maxDepto = Math.max(...deptoData);
-	const deptoColors = deptoData.map(count => {
-		const alpha = 0.4 + 0.6 * (count / maxDepto);
-		return `rgba(54, 162, 235, ${alpha.toFixed(2)})`;
-	});
-
-	const ctxBar = document.getElementById('dashboardBarChart').getContext('2d');
-	new Chart(ctxBar, {
-		type: 'bar',
-		data: {
-			labels: deptoLabels,
-			datasets: [{
-				label: 'N° de Proyectos',
-				data: deptoData,
-				backgroundColor: deptoColors,
-				borderColor: 'rgba(54, 162, 235, 1)',
-				borderWidth: 1
-			}]
-		},
-		options: {
-			responsive: true,
-			indexAxis: 'x', // eje vertical (barras de pie a cabeza)
-			scales: {
-				y: {
-					beginAtZero: true,
-					title: {
-						display: true,
-						text: 'Proyectos'
-					}
-				},
-				x: {
-					ticks: {
-						autoSkip: false,
-						maxRotation: 45,
-						minRotation: 0
-					}
-				}
-			},
-			plugins: {
-				legend: { display: false },
-				title: {
-					display: false
-				}
-			}
-		}
-	});
-
-	// --- Gráfico de donut por Actividad ---
-	const actEntries = Object.entries(porActividad).sort((a, b) => a[0].localeCompare(b[0]));
-	const actLabels = actEntries.map(entry => entry[0]);
-	const actData = actEntries.map(entry => entry[1]);
-	const actMax = Math.max(...actData);
-
-	// Generar colores aleatorios distintos para cada actividad
-	function getRandomColor(index) {
-		const baseColors = [
-			'#02e16d', '#fdfc0b', '#00525a', '#f9670c',
-			'#ff0000','#9a6632', '#3a23d3', '#e2a4f6', 
-			'#e800ff', '#06e4e1', '#8c0033'
-		];
-		return baseColors[index % baseColors.length];
-	}
-
-	const actColors = actLabels.map((_, index) => getRandomColor(index));
-
-	const ctxDonut = document.getElementById('dashboardDoughnutChart').getContext('2d');
-	new Chart(ctxDonut, {
-		type: 'doughnut',
-		data: {
-			labels: actLabels,
-			datasets: [{
-				label: 'N° de Proyectos',
-				data: actData,
-				backgroundColor: actColors,
-				borderColor: 'rgba(255,255,255,0.8)',
-				borderWidth: 2
-			}]
-		},
-		options: {
-			responsive: true,
-			plugins: {
-				legend: {
-					position: 'right'
-				},
-				title: {
-					display: false
-				}
-			}
-		}
-	});
-}
 
 
 
@@ -339,6 +217,7 @@ var leyenda = L.control.Legend({
 				}
 	]
 });
+
 
 
 

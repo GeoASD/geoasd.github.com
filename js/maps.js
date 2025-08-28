@@ -27,6 +27,11 @@ var proyectos_total 	= new L.GeoJSON.AJAX(proyectos_wfs,{
 
 
 
+var gifIcon = L.icon({
+    iconUrl: 'images/point_azul.svg', // ejemplo: 'images/pulse.gif'
+    iconSize: [32, 32], // ajusta según el tamaño del GIF
+    iconAnchor: [16, 16], // el centro del icono será el punto exacto en el mapa
+});
 
 
 
@@ -40,7 +45,12 @@ var proyectos_total 	= new L.GeoJSON.AJAX(proyectos_wfs,{
 
 
 var proyectos_total = L.geoJSON(proyectos_total,{
-	onEachFeature : popup_proyectos
+	pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, {
+            icon: gifIcon
+        });
+    },
+    onEachFeature: popup_proyectos
 }).addTo(map);
 
 generarDashboard(proyectos_total);
@@ -329,6 +339,7 @@ var leyenda = L.control.Legend({
 				}
 	]
 });
+
 
 
 

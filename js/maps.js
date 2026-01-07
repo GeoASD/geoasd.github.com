@@ -189,7 +189,6 @@ var sidebar = L.control.sidebar({
 	//closeButton	: false
 }).addTo(map);
 
-sidebar.open("home");
 
 
 
@@ -217,6 +216,7 @@ var leyenda = L.control.Legend({
 				}
 	]
 });
+
 
 
 

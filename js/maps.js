@@ -184,7 +184,7 @@ map.addControl(searchControl);
 //Añadir SiderBar
 var sidebar = L.control.sidebar({
 	position 	: "left",
-	autopan		: false,
+	collapsed		: true,
 	container	: "sidebar",
 	//closeButton	: false
 }).addTo(map);
@@ -217,6 +217,7 @@ var leyenda = L.control.Legend({
 				}
 	]
 });
+
 
 
 

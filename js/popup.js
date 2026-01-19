@@ -1,6 +1,6 @@
 // Crear función popup
 function popup_proyectos(feature, layer){
-	if(feature.properties && feature.properties.Proyecto){
+	if(feature.properties && feature.properties.proyecto){
 		var popupcontent =
 							"<br>"+"<b>Proyecto: </b>" + feature.properties.proyecto +
 							"<br>"+"<b>Código: </b>" + feature.properties.código +
@@ -16,6 +16,7 @@ function popup_proyectos(feature, layer){
 		});
 	}
 };
+
 
 
 

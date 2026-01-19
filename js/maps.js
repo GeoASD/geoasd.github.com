@@ -115,7 +115,7 @@ L.Control.geocoder({
 //Agregar control de busqueda de atributos de una capa
 var searchControl = new L.Control.Search({
 						layer : proyectos_total,
-						propertyName : "Proyecto",
+						propertyName : "proyecto", "código",
 						zoom : 12,
 						collapsed : true,
 						filterData: function(text, records) {
@@ -216,6 +216,7 @@ var leyenda = L.control.Legend({
 				}
 	]
 });
+
 
 
 

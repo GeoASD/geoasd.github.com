@@ -6,7 +6,8 @@ var map = L.map("map").setView([-10.548704, -75.461643], 5);
 
 //Enlazar mapas base
 var osm_estandar = L.tileLayer(' http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	maxZoom: 19,				 
+	maxZoom: 19,
+	minZoom: 3,
 }).addTo(map);
 
 
@@ -216,6 +217,7 @@ var leyenda = L.control.Legend({
 				}
 	]
 });
+
 
 
 
